@@ -1,0 +1,24 @@
+{
+  "name": "filemanagerx",
+  "version": "1.0.0",
+  "description": "Simple Filemanager without a Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnadoba/filemanagerx.git"
+  },
+  "keywords": [
+    "filemanager",
+    "express",
+    "simple"
+  ],
+  "author": "iWinX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dnadoba/filemanagerx/issues"
+  },
+  "homepage": "https://github.com/dnadoba/filemanagerx#readme"
+}
