@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/dnadoba/filemanagerx#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "pug": "^2.0.1"
   }
 }
