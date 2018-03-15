@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/dnadoba/filemanagerx/issues"
   },
-  "homepage": "https://github.com/dnadoba/filemanagerx#readme"
+  "homepage": "https://github.com/dnadoba/filemanagerx#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
