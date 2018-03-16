@@ -16,7 +16,7 @@ app.use(require('./routes/login'))
 app.use(require('./routes/logout'))
 app.use(require('./routes/files/list'))
 app.use(require('./routes/files/delete'))
-app.use(require('./routes/files/upload'))
 app.use(require('./routes/files/download'))
-
+app.use(require('./routes/admin/list'))
+app.use(require('./routes/admin/upload'))
 module.exports = app
