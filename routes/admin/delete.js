@@ -15,7 +15,8 @@ router.post('/admin/list*', (req, res, next) => {
     res.locals.urljoin = urljoin
 
     res.render('files/list', {
-      data: data
+      data: data,
+      admin: true,
     });
   })
 })
