@@ -30,7 +30,7 @@ block content
                                             img(width='50',src='#{path.join(data.path, file.title)}')
                                     td
                                         if(file.isFile)
-                                            | #{path.join(data.path, file.title)}
+                                            a(href=path.join("/files", data.path, file.title)) #{file.title}
                                         else
                                             a(href=path.join("/list", data.path, file.title)) #{path.join('/', data.path, file.title)}
                                     td
