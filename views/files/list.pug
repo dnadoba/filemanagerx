@@ -35,8 +35,7 @@ block content
                                             a(href=path.join("/list", data.path, file.title)) #{path.join('/', data.path, file.title)}
                                     td
                                         form(method='post')
-                                            input(type='submit', hidden='#{path.join("/files/delete", data.path) + "?file=" + file.title}')
-
-                                        //a.col-pink(href='#{path.join("/files/delete", data.path) + "?file=" + file.title}')
-                                            i.material-icons.small delete
-                                            span Delete
+                                            input(type='hidden', name='path', value=path.join("/files/", data.path,file.title))
+                                            button(type='submit')
+                                                i.material-icons.small delete
+                                                span Delete
