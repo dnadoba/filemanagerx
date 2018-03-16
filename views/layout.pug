@@ -37,7 +37,7 @@ html(lang='en')
         .navbar-header
           a.navbar-toggle.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
           a.bars(href='javascript:void(0);', style='display: block;')
-          a.navbar-brand.fl-left.hidden-xs(href='/') iWinX 
+          a.navbar-brand.fl-left.hidden-xs(href='/') iWinX
             b FileManagerX
     section
       aside#leftsidebar.sidebar
@@ -50,15 +50,20 @@ html(lang='en')
         .menu
           ul.list
             li.active
-              a(class='waves-effect waves-block toggled')
+              a(class='waves-effect waves-block toggled', href="/list")
                 i.material-icons home
                 span Dashboard
+          ul.list
+            li.active
+              a(class='waves-effect waves-block toggled', href="/upload")
+                i.material-icons home
+                span Upload
         .legal
           .copyright
-            | © #{new Date().getFullYear()} 
+            | © #{new Date().getFullYear()}
             a(href='/') iWinX
           .version
-            b Version: 
+            b Version:
             | Live-System
     section.content
       .container-fluid
