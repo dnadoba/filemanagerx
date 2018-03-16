@@ -1,7 +1,69 @@
-html
-  head
-    title iWinX
-  body
-    header
-    main
-      block content
+doctype html
+html(lang='en')
+  title= title
+  meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+  link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico')
+  link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css')
+  link(href='https://fonts.googleapis.com/icon?family=Material+Icons',rel='stylesheet',type='text/css')
+  link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.css')
+  link(rel='stylesheet', href='/css/materialize.css')
+  link(rel='stylesheet', href='/css/style.css')
+  link(rel='stylesheet', href='/css/themes/all-themes.css')
+  link(rel='stylesheet', href='/plugins/dropzone/basic.css')
+  link(rel='stylesheet', href='/plugins/dropzone/dropzone.css')
+  link(rel='stylesheet', href='/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')
+
+  script(src='/plugins/jquery/jquery.js')
+  script(src='/plugins/node-waves/waves.js')
+  script(src='/plugins/bootstrap/js/bootstrap.js')
+  script(src='/js/admin.js')
+  script(src='/plugins/dropzone/dropzone.js')
+  script(src='/js/custom.js')
+
+  body(class='theme-light-blue')
+    .page-loader-wrapper
+      .page-loader-wrapper
+        .loader
+          .preloader
+            .spinner-layer.pl-red
+              .circle-clipper.left
+                .circle
+              .circle-clipper.right
+                .circle
+          p Loading page
+    .overlay
+    nav.navbar
+      .container-fluid
+        .navbar-header
+          a.navbar-toggle.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
+          a.bars(href='javascript:void(0);', style='display: block;')
+          a.navbar-brand.fl-left.hidden-xs(href='/') iWinX 
+            b FileManagerX
+    section
+      aside#leftsidebar.sidebar
+        .user-info
+          .image
+            img(src='/images/user.png', width='48', height='48', alt='User')
+          .info-container
+            .name(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Admin
+            .username iWinX
+        .menu
+          ul.list
+            li.active
+              a(class='waves-effect waves-block toggled')
+                i.material-icons home
+                span Dashboard
+        .legal
+          .copyright
+            | © #{new Date().getFullYear()} 
+            a(href='/') iWinX
+          .version
+            b Version: 
+            | Live-System
+    section.content
+      .container-fluid
+        if success
+          div.alert.bg-green #{success}
+        if error
+          div.alert.bg-red #{error}
+        block content
