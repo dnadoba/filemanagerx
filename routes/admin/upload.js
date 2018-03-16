@@ -13,11 +13,13 @@ if (!fs.existsSync(destinationPath)) {
   fs.mkdirSync(destinationPath)
 }
 
-router.get('/upload', (req, res, next) => {
-  res.render("uploads")
+router.get('/admin/upload', (req, res, next) => {
+  res.render("uploads", {
+    admin: true,
+  })
 })
 
-router.post('/upload', upload.any(), (req, res, next) => {
+router.post('/admin/upload', upload.any(), (req, res, next) => {
   req.files.forEach((file) => {
     fs.rename(file.path, path.join(destinationPath, file.originalname), (error) => {
       if (error) {
@@ -27,7 +29,8 @@ router.post('/upload', upload.any(), (req, res, next) => {
   })
   console.log(req.files)
 
-  res.render("uploads")
-})
-
+  res.render('uploads', {
+    admin: true,
+  });
+});
 module.exports = router

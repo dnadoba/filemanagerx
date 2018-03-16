@@ -21,7 +21,8 @@ block content
                             tr
                                 th Preview
                                 th File
-                                th Actions
+                                if(admin)
+                                  th Actions
                         tbody
                             each file in data.files
                                 tr
