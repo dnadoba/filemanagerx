@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path')
 const router = express.Router()
 const files = require('../../api/files')
-const urljoin = require('urljoin')
+const urljoin = require('url-join')
 
 router.post('/admin/list*', (req, res, next) => {
   let directoryPath = path.join(__dirname, '../../files', req.params[0])
