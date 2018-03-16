@@ -57,7 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
-files/
+/files/
 .idea/
 
 # visual studio files
