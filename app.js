@@ -19,4 +19,8 @@ app.use(require('./routes/files/download'))
 app.use(require('./routes/admin/list'))
 app.use(require('./routes/admin/upload'))
 app.use(require('./routes/admin/delete'))
+
+app.get("/", function(req, res) {
+  res.redirect("/list")
+})
 module.exports = app
