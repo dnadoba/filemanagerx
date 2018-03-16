@@ -11,7 +11,8 @@ router.get('/list*', (req, res, next) => {
     res.locals.path = path
 
     res.render('files/list', {
-      data: data
+      data: data,
+      admin true
     });
   })
 })

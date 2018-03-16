@@ -34,6 +34,7 @@ block content
                                         else
                                             a(href='/list' + data.path + '/' + file.title) #{data.path + '/' + file.title}
                                     td
+                                      if(admin)
                                         form(method='post')
                                             input(type='hidden', name='path', value='/files/' + data.path + '/' + file.title)
                                             button(type='submit')
