@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const path = require('path')
+const urljoin = require('url-join')
 const files = require('../../api/files')
 
 router.get('/list*', (req, res, next) => {
@@ -8,7 +9,7 @@ router.get('/list*', (req, res, next) => {
 
   files.list(directoryPath, req.params[0], (err, data) => {
 
-    res.locals.path = path
+    res.locals.urljoin = urljoin
 
     res.render('files/list', {
       data: data
