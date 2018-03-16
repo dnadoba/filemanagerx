@@ -13,7 +13,7 @@ block content
                         each pathObject,index in data.paths
                             li
                                 if(index < data.paths.length - 1)
-                                    a(href='/list'+ ' / ' + pathObject.path+ ' / ' + pathObject.title)
+                                    a(href='/list'+ ' / ' + pathObject.path) #{pathObject.title}
                                 else
                                     | #{pathObject.title}
                     table(class='table table-striped')
@@ -30,9 +30,9 @@ block content
                                             img(width='50',src=data.path + '/' + file.title)
                                     td
                                         if(file.isFile)
-                                            a(href='/files/' + data.path + '/' + file.title + '/' + file.title)
+                                            a(href='/files/' + data.path + '/' + file.title) #{file.title}
                                         else
-                                            a(href='/list/' + data.path + '/' + file.title + '/' + data.path + '/' + file.title)
+                                            a(href='/list/' + data.path + '/' + file.title) #{data.path + '/' + file.title}
                                     td
                                         form(method='post')
                                             input(type='hidden', name='path', value='/files/' + data.path + '/' + file.title)
