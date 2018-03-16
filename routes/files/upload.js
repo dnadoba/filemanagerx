@@ -7,7 +7,9 @@ const multer  = require('multer')
 const upload = multer({ dest: path.join(os.tmpdir(), 'uploads') })
 const destinationPath = path.join(path.dirname(require.main.filename), 'files')
 
-fs.mkdirSync(destinationPath)
+if (!fs.existsSync(destinationPath)) {
+  fs.mkdirSync(destinationPath)
+}
 
 router.get('/files/upload', (req, res, next) => {
   res.render("uploads")
