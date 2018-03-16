@@ -13,7 +13,7 @@ block content
 						each pathObject,index in data.paths
 							li
 								if(index < data.paths.length - 1)
-									a(href=path.join("/files/list", pathObject.path)) #{pathObject.title}
+									a(href=path.join("/list", pathObject.path)) #{pathObject.title}
 								else
 									| #{pathObject.title}
 					table(class='table table-striped')
@@ -32,7 +32,7 @@ block content
 										if(file.isFile)
 											| #{path.join(data.path, file.title)}
 										else
-											a(href=path.join("/files/list", data.path, file.title)) #{path.join('/', data.path, file.title)}
+											a(href=path.join("/list", data.path, file.title)) #{path.join('/', data.path, file.title)}
 									td
 										a.col-pink(href='#{path.join("/files/delete", data.path) + "?file=" + file.title}') 
 											i.material-icons.small delete 
