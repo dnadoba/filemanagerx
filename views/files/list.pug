@@ -1,4 +1,39 @@
 extends ../layout
 
 block content
-  h1 Hallo
+	.block-header
+		h2 Dashboard
+	.row.clearfix
+		.col-lg-12.col-md-12.col-sm-12.col-xs-12
+			.card
+				.header
+					h2 Files
+				.body
+					ol.breadcrumb.breadcrumb-col-light-blue
+						each pathObject,index in data.paths
+							li
+								if(index < data.paths.length - 1)
+									a(href=path.join("/files/list", pathObject.path)) #{pathObject.title}
+								else
+									| #{pathObject.title}
+					table(class='table table-striped')
+						thead
+							tr
+								th Preview
+								th File
+								th Actions
+						tbody
+							each file in data.files
+								tr
+									td
+										if(file.isFile && ['jpg','png', 'gif', 'jpeg'].includes(file.title.split('.').pop()))
+											img(width='50',src='#{path.join(data.path, file.title)}')
+									td
+										if(file.isFile)
+											| #{path.join(data.path, file.title)}
+										else
+											a(href=path.join("/files/list", data.path, file.title)) #{path.join('/', data.path, file.title)}
+									td
+										a.col-pink(href='#{path.join("/files/delete", data.path) + "?file=" + file.title}') 
+											i.material-icons.small delete 
+											span Delete

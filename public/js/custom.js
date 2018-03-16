@@ -1,11 +1,3 @@
-tinymce.init({
-	selector:'textarea'
-});
-
-$('.selectpicker').selectpicker({
-	style: 'btn-info',
-});
-
 Dropzone.options.uploadMultiple = true;
 
 jQuery(($) => {
