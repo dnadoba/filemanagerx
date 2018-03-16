@@ -6,38 +6,18 @@ html(lang='en')
   link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css')
   link(href='https://fonts.googleapis.com/icon?family=Material+Icons',rel='stylesheet',type='text/css')
   link(rel='stylesheet', href='/plugins/bootstrap/css/bootstrap.css')
-  link(rel='stylesheet', href='/plugins/bootstrap-select/css/bootstrap-select.css')
   link(rel='stylesheet', href='/css/materialize.css')
   link(rel='stylesheet', href='/css/style.css')
   link(rel='stylesheet', href='/css/themes/all-themes.css')
-  link(rel='stylesheet', href='/plugins/node-waves/waves.css')
-  link(rel='stylesheet', href='/plugins/animate-css/animate.css')
   link(rel='stylesheet', href='/plugins/dropzone/basic.css')
   link(rel='stylesheet', href='/plugins/dropzone/dropzone.css')
   link(rel='stylesheet', href='/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')
 
   script(src='/plugins/jquery/jquery.js')
   script(src='/plugins/node-waves/waves.js')
-  script(src='/plugins/momentjs/moment.js')
-  script(src='/plugins/jquery-slimscroll/jquery.slimscroll.js')
-  script(src='/plugins/jquery-datatable/jquery.dataTables.js')
-  script(src='/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')
-  script(src='/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')
-  script(src='/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')
-  script(src='/plugins/jquery-datatable/extensions/export/jszip.min.js')
-  script(src='/plugins/jquery-datatable/extensions/export/pdfmake.min.js')
-  script(src='/plugins/jquery-datatable/extensions/export/vfs_fonts.js')
-  script(src='/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')
-  script(src='/plugins/jquery-datatable/extensions/export/buttons.print.min.js')
-  script(src='/plugins/jquery-validation/jquery.validate.js')
-  script(src='/plugins/sweetalert/sweetalert.min.js')
   script(src='/plugins/bootstrap/js/bootstrap.js')
-  script(src='/plugins/bootstrap-select/js/bootstrap-select.js')
   script(src='/js/admin.js')
-  script(src='/js/pages/forms/form-validation.js')
-  script(src='/plugins/tinymce/tinymce.js')
   script(src='/plugins/dropzone/dropzone.js')
-  script(src='/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')
   script(src='/js/custom.js')
 
   body(class='theme-light-blue')
@@ -57,9 +37,8 @@ html(lang='en')
         .navbar-header
           a.navbar-toggle.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
           a.bars(href='javascript:void(0);', style='display: block;')
-          a.navbar-brand.no-top-bottom-padding(href='/')
           a.navbar-brand.fl-left.hidden-xs(href='/') iWinX 
-            b Backend
+            b FileManagerX
     section
       aside#leftsidebar.sidebar
         .user-info
@@ -83,8 +62,8 @@ html(lang='en')
             | Live-System
     section.content
       .container-fluid
-        if !success
+        if success
           div.alert.bg-green #{success}
-        if !error
+        if error
           div.alert.bg-red #{error}
         block content
