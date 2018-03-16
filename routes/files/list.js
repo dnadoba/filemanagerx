@@ -3,7 +3,7 @@ const router = express.Router()
 const fs = require('fs')
 const path = require('path')
 
-router.get('/files/list*', (req, res, next) => {
+router.get('/list*', (req, res, next) => {
   console.log(__dirname)
   
   let directoryPath = path.join(__dirname, '../../files', req.params[0])
