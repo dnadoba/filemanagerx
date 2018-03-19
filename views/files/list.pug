@@ -37,7 +37,7 @@ block content
                                     td
                                       if admin
                                         form(method='post')
-                                            input(type='hidden', name='path', value=urljoin(pagePath, file.relativePath))
+                                            input(type='hidden', name='path', value=urljoin('/files', file.relativePath))
                                             button(type='submit')
                                                 i.material-icons.small delete
                                                 span Delete
