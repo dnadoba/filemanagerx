@@ -16,6 +16,10 @@ block content
                                     a(href=urljoin(pagePath, directory.relativePath)) #{directory.title}
                                 else
                                     | #{directory.title}
+                    if admin
+                        form(method='post', enctype="multipart/form-data")
+                            input(type="file", name="files", multiple=true)
+                            input(type="submit")
                     table(class='table table-striped')
                         thead
                             tr
@@ -38,6 +42,7 @@ block content
                                       if admin
                                         form(method='post')
                                             input(type='hidden', name='path', value=urljoin('/files', file.relativePath))
+                                            input(type='hidden', name='method', value='delete')
                                             button(type='submit')
                                                 i.material-icons.small delete
                                                 span Delete
