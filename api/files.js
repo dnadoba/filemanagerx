@@ -1,43 +1,56 @@
 const path = require('path')
 const fs = require('fs')
+const urljoin = require('url-join')
 
-function list(directoryPath, params, callback){
-  console.log(params)
-  fs.readdir(directoryPath, (err, files) => {
+const imageFileExtensions = ['.jpg', '.png', '.gif', '.jpeg']
+
+function isImage(fileName) {
+  let extension = path.extname(fileName).toLowerCase()
+  return imageFileExtensions.includes(extension)
+}
+
+function list(filesRootDirectory, currentDirectoryPath, callback){
+  fs.readdir(filesRootDirectory, (err, fileNames) => {
     if (err) {
-      calllback(err)
+      callback(err)
       return
     }
 
-
-    let modifiedFiles = []
-
-    files.forEach((file) => {
-      let fileObject = path.join(directoryPath, file);
-      modifiedFiles.push({title: file, isFile: fs.statSync(fileObject).isFile()});
-    });
-
-    let pathObjects = [
-      {
-        title: 'frontend',
-        path: ''
+    let files = fileNames.map((fileName) => {
+      let pathOnFilesystem = path.join(filesRootDirectory, fileName)
+      let isFile = fs.statSync(pathOnFilesystem).isFile()
+      return {
+        title: fileName,
+        relativePath: urljoin(currentDirectoryPath, fileName),
+        //FIXME: get stats of files async
+        isFile: isFile,
+        isImage: isFile && isImage(fileName),
       }
-    ]
+    })
 
-    params.split(path.sep).filter((path) => {
-      return path !== '';
-    }).forEach((path, index, arr) => {
-      pathObjects.push({
+    let directoryNames = currentDirectoryPath
+      .split('/')
+      .filter((directory) => directory !== '')
+
+    let directories = directoryNames.map((path, index, arr) => {
+      return {
         title: path,
-        path: "" + arr.slice(0, index + 1).join('/')
-      });
-    });
+        relativePath: "" + arr.slice(0, index + 1).join('/'),
+      }
+    })
+
+    let rootDirectory = {
+      title: 'files',
+      relativePath: '/',
+    }
+    //add the root directory entry in front of all other direcotries
+    directories.unshift(rootDirectory);
 
     callback(null, {
-        path: params,
-        paths: pathObjects,
-        files: modifiedFiles
-    });
+      currentDirectoryPath: currentDirectoryPath,
+      directories,
+      files,
+    })
   })
 }
 

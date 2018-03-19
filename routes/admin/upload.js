@@ -16,7 +16,7 @@ if (!fs.existsSync(destinationPath)) {
 router.get('/admin/upload', (req, res, next) => {
   res.render("uploads", {
     admin: true,
-    prefixPath: '/admin',
+    pagePath: '/admin/list',
   })
 })
 
@@ -28,11 +28,10 @@ router.post('/admin/upload', upload.any(), (req, res, next) => {
       }
     })
   })
-  console.log(req.files)
 
   res.render('uploads', {
     admin: true,
-    prefixPath: '/admin',
+    pagePath: '/admin/list',
   });
 });
 module.exports = router

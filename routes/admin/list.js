@@ -10,12 +10,11 @@ router.get('/admin/list*', (req, res, next) => {
   files.list(directoryPath, req.params[0], (err, data) => {
 
     res.locals.urljoin = urljoin
-    //    res.locals.admin = true
 
     res.render('files/list', {
       data: data,
       admin: true,
-      prefixPath: '/admin',
+      pagePath: '/admin/list',
     });
   })
 })

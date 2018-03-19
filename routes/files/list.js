@@ -12,7 +12,7 @@ router.get('/list*', (req, res, next) => {
 
     res.render('files/list', {
       data: data,
-      prefixPath: '',
+      pagePath: '/list',
     });
   })
 })
