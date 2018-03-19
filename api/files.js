@@ -1,55 +1,67 @@
 const path = require('path')
 const fs = require('fs')
 const urljoin = require('url-join')
+const async = require('async')
 
 const imageFileExtensions = ['.jpg', '.png', '.gif', '.jpeg']
 
-function isImage(fileName) {
-  let extension = path.extname(fileName).toLowerCase()
+function isImage(filename) {
+  let extension = path.extname(filename).toLowerCase()
   return imageFileExtensions.includes(extension)
 }
 
 function list(filesRootDirectory, currentDirectoryPath, callback){
-  fs.readdir(filesRootDirectory, (err, fileNames) => {
+  fs.readdir(filesRootDirectory, (err, filenames) => {
     if (err) {
-      callback(err)
-      return
+      return callback(err)
     }
 
-    let files = fileNames.map((fileName) => {
-      let pathOnFilesystem = path.join(filesRootDirectory, fileName)
-      let isFile = fs.statSync(pathOnFilesystem).isFile()
-      return {
-        title: fileName,
-        relativePath: urljoin(currentDirectoryPath, fileName),
-        //FIXME: get stats of files async
-        isFile: isFile,
-        isImage: isFile && isImage(fileName),
+    async.map(filenames, (filename, callback) => {
+      fs.stat(path.join(filesRootDirectory, filename), (error, stats) => {
+        if(error) return callback(error);
+        callback(null, {
+          filename,
+          stats,
+        })
+      })
+    }, (error, filenamesWithStats) => {
+      if (error) {
+        return callback(error)
       }
-    })
+      let files = filenamesWithStats.map(({filename, stats}) => {
+        let pathOnFilesystem = path.join(filesRootDirectory, filename)
+        let isFile = stats.isFile();
+        return {
+          title: filename,
+          relativePath: urljoin(currentDirectoryPath, filename),
+          isFile: isFile,
+          isImage: isFile && isImage(filename),
+        }
+      })
 
-    let directoryNames = currentDirectoryPath
-      .split('/')
-      .filter((directory) => directory !== '')
+      let directoryNames = currentDirectoryPath
+        .split('/')
+        .filter((directory) => directory !== '')
 
-    let directories = directoryNames.map((path, index, arr) => {
-      return {
-        title: path,
-        relativePath: "" + arr.slice(0, index + 1).join('/'),
+      let directories = directoryNames.map((path, index, arr) => {
+        return {
+          title: path,
+          relativePath: "" + arr.slice(0, index + 1).join('/'),
+        }
+      })
+
+      let rootDirectory = {
+        title: 'files',
+        relativePath: '/',
       }
-    })
+      //add the root directory entry in front of all other direcotries
+      directories.unshift(rootDirectory);
 
-    let rootDirectory = {
-      title: 'files',
-      relativePath: '/',
-    }
-    //add the root directory entry in front of all other direcotries
-    directories.unshift(rootDirectory);
-
-    callback(null, {
-      currentDirectoryPath: currentDirectoryPath,
-      directories,
-      files,
+      callback(null, {
+        currentDirectoryPath,
+        directories,
+        files,
+      })
     })
   })
 }
