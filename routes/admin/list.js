@@ -14,7 +14,8 @@ router.get('/admin/list*', (req, res, next) => {
 
     res.render('files/list', {
       data: data,
-      admin: true
+      admin: true,
+      prefixPath: '/admin',
     });
   })
 })

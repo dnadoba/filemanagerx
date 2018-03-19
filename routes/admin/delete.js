@@ -17,6 +17,7 @@ router.post('/admin/list*', (req, res, next) => {
     res.render('files/list', {
       data: data,
       admin: true,
+      prefixPath: '/admin',
     });
   })
 })
