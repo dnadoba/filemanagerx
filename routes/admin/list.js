@@ -8,7 +8,9 @@ router.get('/admin/list*', (req, res, next) => {
   let directoryPath = path.join(__dirname, '../../files', req.params[0])
 
   files.list(directoryPath, req.params[0], (err, data) => {
-
+    if(err) {
+      return next(err)
+    }
     res.locals.urljoin = urljoin
 
     res.render('files/list', {
