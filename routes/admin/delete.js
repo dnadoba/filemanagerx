@@ -11,7 +11,9 @@ router.post('/admin/list*', (req, res, next) => {
   fs.unlinkSync(path.join(path.dirname(require.main.filename), req.body.path))
 
   files.list(directoryPath, req.params[0], (err, data) => {
-
+    if(err) {
+      return next(err)
+    }
     res.locals.urljoin = urljoin
 
     res.render('files/list', {
