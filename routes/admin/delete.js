@@ -18,8 +18,17 @@ router.post('/admin/list*', upload.any(), (req, res, next) => {
   if (req.body.method === 'delete') {
       console.log('delete')
 
-
-      fs.unlinkSync(path.join(path.dirname(require.main.filename), req.body.path))
+    let filePath = path.join(path.dirname(require.main.filename), req.body.path)
+    fs.unlink(filePath, (error) => {
+      if (error) {
+        //file does not exists
+        if (error.code === "ENOENT") {
+          //ignore, it was probably already delete
+        } else {
+          return next(error)
+        }
+      }
+    })
   } else {
     console.log('upload')
     //Upload
