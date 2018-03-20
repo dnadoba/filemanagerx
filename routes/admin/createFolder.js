@@ -1,7 +1,9 @@
 
 
 function createFolder(req, res, next) {
-  next(new Error("not implemented"))
+  const currentRelativeFolderPath = req.params[0]
+  const folderName = req.body.folderName
+  next(new Error("createFolder not yet implemented"))
 }
 
 module.exports = {
