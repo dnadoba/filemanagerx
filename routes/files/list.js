@@ -1,23 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const path = require('path')
-const urljoin = require('url-join')
-const files = require('../../api/files')
+const renderList = require('./renderList')
 
-router.get('/list*', (req, res, next) => {
-
-  let directoryPath = path.join(__dirname, '../../files', req.params[0])
-  files.list(directoryPath, req.params[0], (err, data) => {
-    if(err) {
-      return next(err)
-    }
-    res.locals.urljoin = urljoin
-
-    res.render('files/list', {
-      data: data,
-      pagePath: '/list',
-    });
-  })
-})
+router.get('/list*', renderList.forPublic)
 
 module.exports = router
