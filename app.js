@@ -12,8 +12,6 @@ app.set('view engine', 'pug')
 
 app.use(express.static('public'))
 
-app.use(require('./routes/login'))
-app.use(require('./routes/logout'))
 app.use(require('./routes/files/list'))
 app.use(require('./routes/files/download'))
 app.use(require('./routes/admin/list'))
@@ -24,6 +22,6 @@ app.get("/", function(req, res) {
   res.redirect("/list")
 })
 app.get("/admin", function(req, res) {
-    res.redirect("/admin/upload")
+    res.redirect("/admin/list")
 })
 module.exports = app
