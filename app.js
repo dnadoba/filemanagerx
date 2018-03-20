@@ -17,8 +17,6 @@ app.use(require('./routes/logout'))
 app.use(require('./routes/files/list'))
 app.use(require('./routes/files/download'))
 app.use(require('./routes/admin/list'))
-app.use(require('./routes/admin/upload'))
-app.use(require('./routes/admin/delete'))
 
 
 // redirects
