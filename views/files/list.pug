@@ -43,7 +43,7 @@ block content
                                 tr
                                     td
                                         if file.isImage
-                                            img(width='128',src=urljoin('/files', file.relativePath))
+                                          img.img-thumbnail(width='128',src=urljoin('/files', file.relativePath))
                                     td
                                         if file.isFile
                                             a(href=urljoin('/files', file.relativePath)) #{file.title}
