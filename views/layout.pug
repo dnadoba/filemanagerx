@@ -1,6 +1,6 @@
 doctype html
 html(lang='en')
-  title= title
+  title FileManagerX
   meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
   link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico')
   link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css')
@@ -38,15 +38,14 @@ html(lang='en')
           a.navbar-toggle.collapsed(href='javascript:void(0);', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
           a.bars(href='javascript:void(0);', style='display: block;')
           a.navbar-brand.fl-left.hidden-xs(href='/') iWinX
-            b FileManagerX
+            b FileManagerX 
     section
       aside#leftsidebar.sidebar
         .user-info
           .image
             img(src='/images/user.png', width='48', height='48', alt='User')
           .info-container
-            .name(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Admin
-            .username iWinX
+            .name(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') iWinX
         .menu
           if(admin)
             ul.list
