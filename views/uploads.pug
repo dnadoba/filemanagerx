@@ -3,5 +3,6 @@ extends layout.pug
 block content
     h1 Upload
     form(method="post", enctype="multipart/form-data")
+      label.btn.btn-primary.btn-file
         input(type="file", name="files", multiple=true)
-        input(type="submit")
+      input(type="submit")

@@ -18,8 +18,9 @@ block content
                                     | #{directory.title}
                     if isAdmin
                         form(method='post', enctype="multipart/form-data")
+                          label.btn.btn-default.btn-file
                             input(type="file", name="files", multiple=true)
-                            input(type="submit")
+                          input.btn.btn-primary(type="submit")
                     table(class='table table-striped')
                         thead
                             tr
@@ -34,7 +35,7 @@ block content
                                         input(type='hidden', name='action', value='createFolder')
                                         td Create Folder
                                         td
-                                            input(type="text", placeholder="New Folder", name='folderName')
+                                            input.form-control(type="text", placeholder="New Folder", name='folderName')
                                         td
                                             button.btn.btn-primary(type='submit')
                                                 i.material-icons.small create
